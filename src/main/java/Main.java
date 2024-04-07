@@ -40,17 +40,8 @@ public class Main {
             }
         }
 
-        /*System.out.println("Добавленные товары:");
-        Iterator<String> mapIterator = productMap.keySet().iterator();
-        while (mapIterator.hasNext()) {
-            String products = mapIterator.next();
-            System.out.println(String.format(products));
-        }*/
-
-        Iterator<Map.Entry<String, Double>> mapIterator = productMap.entrySet().iterator();
         //Map.Entry<String, Double> entry = mapIterator.next();
-        while (mapIterator.hasNext()) {
-            Map.Entry<String, Double> entry = mapIterator.next();
+        for (Map.Entry<String, Double> entry : productMap.entrySet()) {
             String product = entry.getKey();
             double price = entry.getValue();
             System.out.println(String.format("%s %.2f рублей", product, price));
