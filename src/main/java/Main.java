@@ -35,8 +35,7 @@ public class Main {
             if (!command.equals("Завершить")) {
                 System.out.println("Введите название и стоимость товара");
             } else {
-                //System.out.println(String.format("Добавленные товары:\n %s %.2f", product, price));
-                System.out.println(String.format("Добавленные товары: " + productMap));
+                System.out.println("Добавленные товары:");
                 break;
             }
         }
@@ -48,13 +47,13 @@ public class Main {
             System.out.println(String.format(products));
         }*/
 
-        System.out.println("Добавленные товары:");
-
-        Iterator<Map.Entry<String, Double>> mapiterator = productMap.entrySet().iterator();
-        Map.Entry<String, Double> entry = mapiterator.next();
-        String key = entry.getKey();
-        double value = entry.getValue();
-        System.out.println(String.format(key, value));
-
+        Iterator<Map.Entry<String, Double>> mapIterator = productMap.entrySet().iterator();
+        //Map.Entry<String, Double> entry = mapIterator.next();
+        while (mapIterator.hasNext()) {
+            Map.Entry<String, Double> entry = mapIterator.next();
+            String product = entry.getKey();
+            double price = entry.getValue();
+            System.out.println(String.format("%s %.2f рублей", product, price));
+        }
     }
 }
