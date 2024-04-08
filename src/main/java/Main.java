@@ -5,8 +5,13 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
+    //public double sum;
+    double sum = 0;
+    //Formatter formatter = new Formatter();
 
     public static void main(String[] args) {
+        //Formatter formatter = new Formatter();
+
         System.out.println("На скольких человек необходимо разделить счёт?");
 
         int man;
@@ -56,18 +61,21 @@ public class Main {
 
 }
 class Formatter {
-    static double number = 211.56;
+    //Main f = new Main();
+    //Formatter formatter = new Formatter();
+    //double number = f.sum;
+    double number = sum;
     public static void main(String[] args) {
 
         double result = Math.floor(number);
-        double ld1 = result % 10;
-        double ld2 = result % 100;
+        double ln1 = result % 10;
+        double ln2 = result % 100;
         System.out.println(number);
 
-        if (ld1 == 1 & ld2 != 11) {
+        if (ln1 == 1 & ln2 != 11) {
             String rub = "рубль";
             System.out.println(rub);
-        } else if (ld1 == 2 & ld2 != 12 | ld1 == 3 & ld2 != 13 | ld1 == 4 & ld2 != 14) {
+        } else if (ln1 == 2 & ln2 != 12 | ln1 == 3 & ln2 != 13 | ln1 == 4 & ln2 != 14) {
             String rub = "рубля";
             System.out.println(rub);
         } else {
