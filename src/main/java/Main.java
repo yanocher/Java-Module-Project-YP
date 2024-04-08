@@ -6,6 +6,9 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
     public double sum;
+    //Formatter formatter = new Formatter();
+    public String rub;
+    //String rub;
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
@@ -53,11 +56,17 @@ public class Main {
         System.out.println(String.format("Итого: %.2f рублей", sum));
         double separateBill = sum / man;
         System.out.println(String.format("Каждый человек должен заплатить: %.2f рублей", separateBill));
+        System.out.println(Formatter.rub);
+        System.out.println(rub);
+        this.rub = rub;
     }
 
     public void Formatter() {
         double number = sum;
-
+        //String Formatter = new String();
+        //Formatter formatter = new Formatter();
+        //public String rub;
+        //String rub;
         double result = Math.floor(number);
         double ln1 = result % 10;
         double ln2 = result % 100;
@@ -66,12 +75,15 @@ public class Main {
         if (ln1 == 1 & ln2 != 11) {
             String rub = "рубль";
             System.out.println(rub);
+            this.rub = rub;
         } else if (ln1 == 2 & ln2 != 12 | ln1 == 3 & ln2 != 13 | ln1 == 4 & ln2 != 14) {
             String rub = "рубля";
             System.out.println(rub);
+            this.rub = rub;
         } else {
             String rub = "рублей";
             System.out.println(rub);
+            this.rub = rub;
         }
     }
 }
