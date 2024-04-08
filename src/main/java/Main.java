@@ -5,13 +5,9 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
-    //public double sum;
-    double sum = 0;
-    //Formatter formatter = new Formatter();
+    public double sum;
 
     public static void main(String[] args) {
-        //Formatter formatter = new Formatter();
-
         System.out.println("На скольких человек необходимо разделить счёт?");
 
         int man;
@@ -59,13 +55,8 @@ public class Main {
         System.out.println(String.format("Каждый человек должен заплатить: %.2f рублей", separateBill));
     }
 
-}
-class Formatter {
-    //Main f = new Main();
-    //Formatter formatter = new Formatter();
-    //double number = f.sum;
-    double number = sum;
-    public static void main(String[] args) {
+    public void Formatter() {
+        double number = sum;
 
         double result = Math.floor(number);
         double ln1 = result % 10;
