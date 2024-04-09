@@ -1,4 +1,3 @@
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -6,13 +5,16 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
-    public double sum;
+    //public double sum;
+    public double separateBill;
+    public double price;
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
 
         Main format = new Main();
         String rub = format.Formatter();
+        //System.out.println(rub);
 
         int man;
         while (true) {
@@ -62,10 +64,11 @@ public class Main {
 
     public String Formatter() {
 
-        double number = sum;
+        double number = price;
         double result = Math.floor(number);
         double ln1 = result % 10;
         double ln2 = result % 100;
+
         String currency;
 
         if (ln1 == 1 & ln2 != 11) {
