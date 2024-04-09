@@ -1,3 +1,4 @@
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -6,12 +7,12 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
     public double sum;
-    //Formatter formatter = new Formatter();
-    public String rub;
-    //String rub;
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
+
+        Main format = new Main();
+        String rub = format.Formatter();
 
         int man;
         while (true) {
@@ -46,47 +47,34 @@ public class Main {
         for (Map.Entry<String, Double> entry : productMap.entrySet()) {
             String product = entry.getKey();
             double price = entry.getValue();
-            System.out.println(String.format("%s %.2f рублей", product, price));
+            System.out.println(String.format("%s %.2f %s ", product, price, rub));
         }
 
         double sum = 0;
         for (double bill : productMap.values()) {
             sum += bill;
         }
-        System.out.println(String.format("Итого: %.2f рублей", sum));
+
+        System.out.println(String.format("Итого: %.2f %s ", sum, rub));
         double separateBill = sum / man;
-        System.out.println(String.format("Каждый человек должен заплатить: %.2f рублей", separateBill));
-        System.out.println(Formatter.rub);
-        System.out.println(rub);
-        this.rub = rub;
+        System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, rub));
     }
 
-    public void Formatter() {
+    public String Formatter() {
+
         double number = sum;
-        //String Formatter = new String();
-        //Formatter formatter = new Formatter();
-        //public String rub;
-        //String rub;
         double result = Math.floor(number);
         double ln1 = result % 10;
         double ln2 = result % 100;
-        System.out.println(number);
+        String currency;
 
         if (ln1 == 1 & ln2 != 11) {
-            String rub = "рубль";
-            System.out.println(rub);
-            this.rub = rub;
+            currency = "рубль";
         } else if (ln1 == 2 & ln2 != 12 | ln1 == 3 & ln2 != 13 | ln1 == 4 & ln2 != 14) {
-            String rub = "рубля";
-            System.out.println(rub);
-            this.rub = rub;
+            currency = "рубля";
         } else {
-            String rub = "рублей";
-            System.out.println(rub);
-            this.rub = rub;
+            currency = "рублей";
         }
+        return currency;
     }
 }
-
-
-
