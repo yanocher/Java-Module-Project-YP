@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
-
     static double resultPrice;
     static double resultSum;
     static double resultSeparateBill;
@@ -43,6 +42,7 @@ public class Main {
             String product = scanner.next();
             double price = scanner.nextDouble();
             productMap.put(product, price);
+
             System.out.println("Товар успешно добавлен");
             System.out.println("Если хотите добавить ещё один товар введите 'Да', если нет, введите 'Завершить'");
             String command = scanner.next();
@@ -61,16 +61,15 @@ public class Main {
             System.out.println(String.format("%s %.2f %s ", product, price, Formatter()));
         }
 
-        double sum = 0;
         for (double bill : productMap.values()) {
-            sum += bill;
-            resultSum = sum;
-            System.out.println(String.format("Итого: %.2f %s ", sum, Formatter()));
+            resultPrice += bill;
+            resultSum = resultPrice;
+            System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter()));
 
-            double separateBill = sum / man;
+            double separateBill = resultPrice / man;
             resultSeparateBill = separateBill;
-            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, Formatter()));
-
+            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultSeparateBill, Formatter()));
+            break;
         }
     }
 
@@ -90,9 +89,9 @@ public class Main {
         double ln2 = result % 100;
         String currency;
 
-        if (ln1 == 1 & ln2 != 11) {
+        if (ln1 == 1 && ln2 != 11) {
             currency = "рубль";
-        } else if (ln1 == 2 & ln2 != 12 | ln1 == 3 & ln2 != 13 | ln1 == 4 & ln2 != 14) {
+        } else if (ln1 == 2 && ln2 != 12 || ln1 == 3 && ln2 != 13 || ln1 == 4 && ln2 != 14) {
             currency = "рубля";
         } else {
             currency = "рублей";
