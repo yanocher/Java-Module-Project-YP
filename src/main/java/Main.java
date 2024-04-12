@@ -7,8 +7,7 @@ public class Main {
     static HashMap<String, Double> productMap = new HashMap<>();
     static double resultPrice;
     static double resultSum;
-    static double resultSeparateBill;
-
+    static double resultBill;
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
@@ -64,11 +63,11 @@ public class Main {
         for (double bill : productMap.values()) {
             resultPrice += bill;
             resultSum = resultPrice;
-            System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter()));
+            System.out.println(String.format("Итого: %.2f %s ", resultSum, Formatter()));
 
-            double separateBill = resultPrice / man;
-            resultSeparateBill = separateBill;
-            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultSeparateBill, Formatter()));
+            double separateBill = resultSum / man;
+            resultBill = separateBill;
+            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, Formatter()));
             break;
         }
     }
@@ -76,12 +75,12 @@ public class Main {
     public static String Formatter() {
 
         double number = 0;
-        if (number == resultPrice | number == resultSum | number == resultSeparateBill) {
+        if (number == resultPrice || number == resultSum || number == resultBill) {
             number = resultPrice;
         } else if (number == resultSum) {
             number = resultSum;
-        } else if (number == resultSeparateBill) {
-            number = resultSeparateBill;
+        } else if (number == resultBill) {
+            number = resultBill;
         }
 
         double result = Math.floor(number);
