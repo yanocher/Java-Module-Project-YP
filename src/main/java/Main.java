@@ -57,17 +57,16 @@ public class Main {
             String product = entry.getKey();
             double price = entry.getValue();
             resultPrice = price;
-            System.out.println(String.format("%s %.2f %s ", product, price, Formatter()));
+            System.out.println(String.format("%s %.2f %s ", product, resultPrice, Formatter()));
         }
 
         for (double bill : productMap.values()) {
             resultPrice += bill;
             resultSum = resultPrice;
-            System.out.println(String.format("Итого: %.2f %s ", resultSum, Formatter()));
+            System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter()));
 
-            double separateBill = resultSum / man;
-            resultBill = separateBill;
-            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, Formatter()));
+            resultBill = resultSum / man;
+            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultBill, Formatter()));
             break;
         }
     }
@@ -79,7 +78,7 @@ public class Main {
             number = resultPrice;
         } else if (number == resultSum) {
             number = resultSum;
-        } else if (number == resultBill) {
+        } else {
             number = resultBill;
         }
 
