@@ -1,4 +1,3 @@
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -6,13 +5,24 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Double> productMap = new HashMap<>();
-    public double sum;
+
+    static double resultPrice;
+    static double resultSum;
+    static double resultSeparateBill;
+
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
 
-        Main format = new Main();
-        String rub = format.Formatter();
+        while (true) {
+            if (!scanner.hasNextInt()) {
+                System.out.println("Это не число");
+                System.out.println("Введите число");
+                scanner.nextLine();
+            } else {
+                break;
+            }
+        }
 
         int man;
         while (true) {
@@ -47,22 +57,34 @@ public class Main {
         for (Map.Entry<String, Double> entry : productMap.entrySet()) {
             String product = entry.getKey();
             double price = entry.getValue();
-            System.out.println(String.format("%s %.2f %s ", product, price, rub));
+            resultPrice = price;
+            System.out.println(String.format("%s %.2f %s ", product, price, Formatter()));
         }
 
         double sum = 0;
         for (double bill : productMap.values()) {
             sum += bill;
-        }
+            resultSum = sum;
+            System.out.println(String.format("Итого: %.2f %s ", sum, Formatter()));
 
-        System.out.println(String.format("Итого: %.2f %s ", sum, rub));
-        double separateBill = sum / man;
-        System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, rub));
+            double separateBill = sum / man;
+            resultSeparateBill = separateBill;
+            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", separateBill, Formatter()));
+
+        }
     }
 
-    public String Formatter() {
+    public static String Formatter() {
 
-        double number = sum;
+        double number = 0;
+        if (number == resultPrice | number == resultSum | number == resultSeparateBill) {
+            number = resultPrice;
+        } else if (number == resultSum) {
+            number = resultSum;
+        } else if (number == resultSeparateBill) {
+            number = resultSeparateBill;
+        }
+
         double result = Math.floor(number);
         double ln1 = result % 10;
         double ln2 = result % 100;
