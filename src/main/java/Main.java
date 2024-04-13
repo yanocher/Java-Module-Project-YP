@@ -25,6 +25,8 @@ public class Main {
         int man;
         while (true) {
             man = scanner.nextInt();
+            scanner.nextLine();
+
             if (man < 1) {
                 System.out.println("Это некорректное значение");
                 System.out.println("На скольких человек необходимо разделить счёт?");
@@ -32,21 +34,43 @@ public class Main {
                 System.out.println("Введите значение больше 1");
                 System.out.println("На скольких человек необходимо разделить счёт?");
             } else {
-                System.out.println("Введите название и стоимость товара");
+                System.out.println("Введите название товара:");
                 break;
             }
         }
 
         while (true) {
-            String product = scanner.next();
-            double price = scanner.nextDouble();
-            productMap.put(product, price);
+            String product = scanner.nextLine();
+            System.out.println("Введите стоимость товара:");
 
+            if (scanner.hasNextDouble()) {
+                double price = scanner.nextDouble();
+                if (price > 0) {
+                    productMap.put(product, price);
+                    scanner.nextLine();
+                    break;
+                }
+            } else {
+                System.out.println("Это не число");
+            }
+        }
+
+        while (true) {
             System.out.println("Товар успешно добавлен");
-            System.out.println("Если хотите добавить ещё один товар введите 'Да', если нет, введите 'Завершить'");
-            String command = scanner.next();
+            System.out.println("Если хотите добавить ещё один товар введите 'Да', если нет, введите 'Завершить':");
+            String command = scanner.nextLine();
+
             if (!command.equalsIgnoreCase("Завершить")) {
-                System.out.println("Введите название и стоимость товара");
+                System.out.println("Введите название товара:");
+                String product = scanner.nextLine();
+                System.out.println("Введите стоимость товара:");
+                if (scanner.hasNextDouble()) {
+                    double price = scanner.nextDouble();
+                    if (price > 0) {
+                        productMap.put(product, price);
+                        scanner.nextLine();
+                    }
+                }
             } else {
                 System.out.println("Добавленные товары:");
                 break;
