@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("На скольких человек необходимо разделить счёт?");
-
+        //проверяем на число
         while (true) {
             if (!scanner.hasNextInt()) {
                 System.out.println("Это не число");
@@ -21,7 +21,7 @@ public class Main {
                 break;
             }
         }
-
+        //проверяем число чтобы не <= 1
         int man;
         while (true) {
             man = scanner.nextInt();
@@ -38,7 +38,7 @@ public class Main {
                 break;
             }
         }
-
+        //проверяем на число и что число > 0
         while (true) {
             String product = scanner.nextLine();
             System.out.println("Введите стоимость товара:");
@@ -54,7 +54,7 @@ public class Main {
                 System.out.println("Это не число");
             }
         }
-
+        //спрашиваем добавление товара, завершаем или проверяем на число и что число > 0
         while (true) {
             System.out.println("Товар успешно добавлен");
             System.out.println("Если хотите добавить ещё один товар введите 'Да', если нет, введите 'Завершить':");
@@ -76,19 +76,19 @@ public class Main {
                 break;
             }
         }
-
+        //выводим добавленные товары
         for (Map.Entry<String, Double> entry : productMap.entrySet()) {
             String product = entry.getKey();
             double price = entry.getValue();
             resultPrice = price;
             System.out.println(String.format("%s %.2f %s ", product, resultPrice, Formatter()));
         }
-
+        //выводим сумму добавленных товаров
         for (double bill : productMap.values()) {
             resultPrice += bill;
             resultSum = resultPrice;
             System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter()));
-
+        //выводим сумму каждого чека добавленных товаров
             resultBill = resultSum / man;
             System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultBill, Formatter()));
             break;
@@ -96,7 +96,7 @@ public class Main {
     }
 
     public static String Formatter() {
-
+        //импортируем число, сумму и чек каждого товара
         double number = 0;
         if (number == resultPrice || number == resultSum || number == resultBill) {
             number = resultPrice;
@@ -105,12 +105,12 @@ public class Main {
         } else {
             number = resultBill;
         }
-
+        //округляем вниз до цеолого числа
         double result = Math.floor(number);
         double ln1 = result % 10;
         double ln2 = result % 100;
         String currency;
-
+        //отдаем значения "рубля" своим адресатам
         if (ln1 == 1 && ln2 != 11) {
             currency = "рубль";
         } else if (ln1 == 2 && ln2 != 12 || ln1 == 3 && ln2 != 13 || ln1 == 4 && ln2 != 14) {
