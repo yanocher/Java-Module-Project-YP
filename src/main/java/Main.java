@@ -64,21 +64,22 @@ public class Main {
             String product = entry.getKey();
             double price = entry.getValue();
             resultPrice = price;
-            System.out.println(String.format("%s %.2f %s ", product, resultPrice, Formatter()));
+            System.out.println(String.format("%s %.2f %s ", product, resultPrice, Formatter.formatCurrency()));
         }
 
         //выводим сумму добавленных товаров
         for (double bill : productMap.values()) {
             resultPrice += bill;
             resultSum = resultPrice;
-            System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter()));
+            System.out.println(String.format("Итого: %.2f %s ", resultPrice, Formatter.formatCurrency()));
             //выводим сумму каждого чека добавленных товаров
             resultBill = resultSum / man;
-            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultBill, Formatter()));
+            System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultBill, Formatter.formatCurrency()));
             break;
         }
     }
 
+    //проверяем на число и что число > 0
     private static void checkNamber() {
         while (true) {
             String product = scanner.nextLine();
@@ -95,31 +96,5 @@ public class Main {
                 System.out.println("Это не число");
             }
         }
-    }
-
-    public static String Formatter() {
-        //импортируем число, сумму и чек каждого товара
-        double number = 0;
-        if (number == resultPrice || number == resultSum || number == resultBill) {
-            number = resultPrice;
-        } else if (number == resultSum) {
-            number = resultSum;
-        } else {
-            number = resultBill;
-        }
-        //округляем вниз до цеолого числа
-        double result = Math.floor(number);
-        double ln1 = result % 10;
-        double ln2 = result % 100;
-        String currency;
-        //отдаем значения "рубля" своим адресатам
-        if (ln1 == 1 && ln2 != 11) {
-            currency = "рубль";
-        } else if (ln1 == 2 && ln2 != 12 || ln1 == 3 && ln2 != 13 || ln1 == 4 && ln2 != 14) {
-            currency = "рубля";
-        } else {
-            currency = "рублей";
-        }
-        return currency;
     }
 }
