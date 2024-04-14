@@ -42,7 +42,7 @@ public class Main {
         }
 
         //проверяем на число и что число > 0
-        checkNamber();
+        Chekker.checkNamber();
 
         //спрашиваем добавление товара, завершаем или проверяем на число и что число > 0
         while (true) {
@@ -52,7 +52,7 @@ public class Main {
 
             if (!command.equalsIgnoreCase("Завершить")) {
                 System.out.println("Введите название товара:");
-                checkNamber();
+                Chekker.checkNamber();
             } else {
                 System.out.println("Добавленные товары:");
                 break;
@@ -76,25 +76,6 @@ public class Main {
             resultBill = resultSum / man;
             System.out.println(String.format("Каждый человек должен заплатить: %.2f %s ", resultBill, Formatter.formatCurrency()));
             break;
-        }
-    }
-
-    //проверяем на число и что число > 0
-    private static void checkNamber() {
-        while (true) {
-            String product = scanner.nextLine();
-            System.out.println("Введите стоимость товара:");
-
-            if (scanner.hasNextDouble()) {
-                double price = scanner.nextDouble();
-                if (price > 0) {
-                    productMap.put(product, price);
-                    scanner.nextLine();
-                    break;
-                }
-            } else {
-                System.out.println("Это не число");
-            }
         }
     }
 }
